@@ -5,10 +5,7 @@
     - name: Install Apache
       apt: name=apache2 state=latest
     - name: Start Apache server
-      service:
-        name: httpd
-        state: started
-        enabled: True
+      service: name=apache2 state=restarted
     - name: Deploy static website
       copy:
         src: index.html
