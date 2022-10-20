@@ -2,10 +2,8 @@
 - hosts: webservers 
   become: True
   tasks:
-    - name: Install packages
-      apt:
-        name: "httpd"
-        state: "present"
+    - name: Install Apache
+      apt: name=apache2 state=latest
     - name: Start Apache server
       service:
         name: httpd
