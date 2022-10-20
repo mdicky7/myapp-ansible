@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+    stages{
+        stage ("SCM  Checkout"){
+            steps{
+                git 'https://github.com/mdicky7/myapp-ansible.git'
+            }
+        }
+        stage ("Execute Ansible"){
+            steps{
+                ansiblePlaybook credentialsId: '26e573b0-2d99-4299-94ee-be874fb55685', installation: 'ansible3', inventory: 'dev.inv', playbook: 'apache.yml'
+            }
+        }
+    }
+}
